@@ -50,6 +50,8 @@ public class Comercio012 {
                 + "por favor");
         numeroProductos = entrada.nextInt();
 
+        entrada.nextLine();
+        
         System.out.println("Ingrese el nombre del comercio por favor");
         nombreComercio = entrada.nextLine();
         // calcular la productividad

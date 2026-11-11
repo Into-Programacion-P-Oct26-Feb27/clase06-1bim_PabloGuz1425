@@ -1,0 +1,136 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package paquete2;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+/**
+ *
+ * @author reroes
+ */
+public class Comercio021 {
+
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        entrada.useLocale(Locale.US); // 10,2 / 10.2
+
+        String nombre;
+        String apellido;
+        String localidad;
+        String nombreComercio;
+        int edad;
+        double sueldoBasico;
+        int numeroProductos;
+
+        double productividad;
+        double coeficiente = 0.6;
+        double bono = 0;
+
+        double porcentajeSeguro = 8;
+        double adicionalSeguro;
+
+        double sueldoFinal;
+
+        System.out.println("Ingrese el nombre por favor");
+        nombre = entrada.nextLine();
+
+        System.out.println("Ingrese el apellido por favor");
+        apellido = entrada.nextLine();
+
+        System.out.println("Ingrese su localidad");
+        localidad = entrada.nextLine();
+        
+        System.out.println("Ingrese el nombre del Comercio");
+        nombreComercio = entrada.nextLine();
+
+        System.out.println("Ingrese la edad por favor");
+        edad = entrada.nextInt();
+
+        System.out.println("Ingrese el sueldo básico por favor");
+        sueldoBasico = entrada.nextDouble();
+
+        System.out.println("Ingrese el número de productos vendidos "
+                + "por favor");
+        numeroProductos = entrada.nextInt();
+
+        // calcular la productividad
+        productividad = numeroProductos * coeficiente;
+
+        if (productividad <= 30) {
+            bono = 25; // $25
+        } else {
+            if (productividad > 30 && productividad < 80) {
+                bono = 50;
+            } else {
+                if (productividad >= 80 && productividad < 200) {
+                    bono = 100;
+                } else {
+                    if (productividad >= 200 && productividad <= 500) {
+                        bono = 200;
+                    } else {
+                        bono = 300;
+                    }
+                }
+
+            }
+        }
+
+        if (localidad.equals("Sierra")) {
+            porcentajeSeguro = 10; //10%
+
+        } else {
+            if (localidad.equals("Costa")) {
+                porcentajeSeguro = 12; //12%
+
+            } else {
+                if (localidad.equals("Oriente")) {
+                    porcentajeSeguro = 15; //15%
+                } else {
+                    if (localidad.equals("Insular")) {
+                        porcentajeSeguro = 30; //30%
+                    }else{
+                        porcentajeSeguro = 8; //se lo ocupa para poder tener un dato si el dato ingresado no esta asignado
+                    }
+                }
+            }
+
+        }
+
+        adicionalSeguro = (sueldoBasico * porcentajeSeguro) / 100;
+        sueldoFinal = adicionalSeguro + bono + sueldoBasico;
+
+        System.out.printf("Reporte de Empleado\n\n"
+                + "Nombres: %s\n"
+                + "Apellidos: %s\n"
+                + "Edad: %d\n"
+                + "Sueldo: $%.2f\n"
+                + "Número de productos vendidos: %d\n"
+                + "Nombre del Comercio: %s\n"
+                + "\tProductidad: %.2f\n"
+                + "\tBono: $%.2f\n"
+                + "Adicional del seguro: $%.2f\n\n"
+                + "Sueldo final: $%.2f\n",
+                nombre,
+                apellido,
+                edad,
+                sueldoBasico,
+                numeroProductos,
+                nombreComercio,
+                productividad,
+                bono,
+                adicionalSeguro,
+                sueldoFinal);
+
+    }
+
+}
+
+/*
+De acuerdo a nueva normativa el porcentaje del seguro el variable, si el empleado
+es de la Sierra el porcerntaje es del 10%, de la sierra 12%, del orieinte 15%,
+insular 30%. Acoplar la solucion para que considera la nueva normativa.
+ */
